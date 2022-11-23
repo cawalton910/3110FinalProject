@@ -1,22 +1,28 @@
 ﻿using _3110FinalProject.Models;
+using _3110FinalProject.Services;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace _3110FinalProject.Controllers
 {
+ 
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+     
 
         public HomeController(ILogger<HomeController> logger)
         {
+            
             _logger = logger;
+    
         }
-
-        public IActionResult Index()
-        {
+        public async Task<IActionResult> Index()
+        {     
             return View();
         }
+     
 
         public IActionResult Privacy()
         {
