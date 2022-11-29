@@ -59,6 +59,12 @@ namespace _3110FinalProject.Controllers
         }
         public async Task<IActionResult> Delete(int id)
         {
+            var product = await _productRepo.ReadAsync(id);
+            return View(product);
+        }
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
             await _productRepo.RemoveAsync(id);
             return RedirectToAction("Index");
         }

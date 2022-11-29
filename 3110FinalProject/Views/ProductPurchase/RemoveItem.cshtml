@@ -1,0 +1,46 @@
+﻿@model _3110FinalProject.Models.Entities.ProductPurchase
+@using _3110FinalProject.Services
+@inject ICustomerRepository _customerRepo
+
+@{
+    ViewData["Title"] = "RemoveItem";
+    var customerId = (int)ViewData["customerid"]!;
+    var purchaseId = (int)ViewData["purchaseId"]!;
+    var customer = await _customerRepo.ReadAsync(customerId);
+}
+<h3>Are you sure you want to remove this item?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Purchase Order
+        </dt>
+        <dd class = "col-sm-10">
+            @purchaseId
+        </dd>
+        <dt class = "col-sm-2">
+            Customer
+        </dt>
+        <dd class = "col-sm-10">
+            @customer!.FirstName @customer.LastName
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Product!.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Product!.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+       
+    </dl>
+    
+    <form asp-action="RemoveItem">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Details" asp-route-id="@customerId" asp-route-purchaseid="@purchaseId">Back to List</a>
+    </form>
+</div>

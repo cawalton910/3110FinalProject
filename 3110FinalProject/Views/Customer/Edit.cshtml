@@ -9,9 +9,10 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form  id="updateCustomer"> @*asp-action="Edit"*@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
+            <input asp-for="Id" hidden class="form-control" />         
+            <input asp-for="Purchases" hidden class="form-control" />
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
                 <input asp-for="FirstName" class="form-control" />
@@ -34,5 +35,7 @@
 </div>
 
 @section Scripts {
+    <script defer type="module" src="~/js/customerUpdate.js"></script>
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+

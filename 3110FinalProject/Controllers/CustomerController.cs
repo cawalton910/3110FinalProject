@@ -59,6 +59,12 @@ namespace _3110FinalProject.Controllers
         }
         public async Task<IActionResult> Delete(int id)
         {
+            var customer = await _customerRepo.ReadAsync(id);
+            return View(customer);
+        }
+        [HttpPost, ValidateAntiForgeryToken, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
             await _customerRepo.RemoveAsync(id);
             return RedirectToAction("Index");
         }

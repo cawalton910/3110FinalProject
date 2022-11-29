@@ -1,0 +1,64 @@
+﻿@model IEnumerable<_3110FinalProject.Models.Entities.ProductPurchase>
+@using _3110FinalProject.Services
+@inject ICustomerRepository _customerRepo
+@{
+    ViewData["Title"] = "Purchase Order";
+    var customerId = (int)ViewData["customerid"]!;
+    var purchaseId = (int)ViewData["purchaseId"]!;
+    var customer = await _customerRepo.ReadAsync(customerId);
+}
+
+<h1 style="display: inline-block">Purchase Order #@purchaseId</h1>
+<h4 style="display: inline-block; float:right">Customer: @customer.FirstName @customer.LastName</h4>
+
+<p>
+    <a type="button" class="btn btn-primary mb-3" asp-action="ViewPurchases" asp-controller="Purchase" asp-route-id="@customerId">Back</a>
+    <a type="button" class="btn btn-primary mb-3" asp-action="AddItem" asp-route-id="@customerId" asp-route-purchaseId="@purchaseId">Add item</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Product!.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                Total Cost
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product!.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product!.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                    @{
+                        var cost = (double)item.Product!.Price * (double)item.Quantity;
+                    }
+                $@cost
+            </td>
+            <td>
+@*                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                    <a type="button" class="btn btn-secondary mb-3" asp-action="RemoveItem" asp-route-id="@customerId" asp-route-purchaseid="@purchaseId" asp-route-productid="@item.Id">Remove</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

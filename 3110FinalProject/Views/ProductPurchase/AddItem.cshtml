@@ -3,15 +3,16 @@
 @inject ICustomerRepository _customerRepo
 
 @{
-    var customerId = (int)ViewData["id"];
-    var purchaseId = (int)ViewData["purchaseId"];
+    var customerId = (int)ViewData["id"]!;
+    var purchaseId = (int)ViewData["purchaseId"]!;
     ViewData["Title"] = $"PO#{purchaseId}";
     var customer = await _customerRepo.ReadAsync(customerId);
 }
 
 <h1 style="display: inline-block">Purchase Order #@purchaseId</h1>
-<h4 style="display: inline-block; float:right">Customer: @customer.FirstName @customer.LastName</h4>
-<p><a asp-action="Details" asp-route-id="@customerId" asp-route-purchaseId="@purchaseId">Back</a></p>
+<h4 style="display: inline-block; float:right">Customer: @customer!.FirstName @customer.LastName</h4>
+<h4>Add products to order</h4>
+<p><a type="button" class="btn btn-primary mb-3" asp-action="Details" asp-route-id="@customerId" asp-route-purchaseId="@purchaseId">Back</a></p>
 
 <p>
     <div class="modal fade" id="createPurchaseModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -91,7 +92,7 @@
                         //ViewData["ProductId"] = (int)item.Id;
                     }
                     @*<partial name="_CreatePurchaseModal" view-data="ViewData">*@
-                        <a type="button" class="btn btn-primary mb-3" data-title="@item.Name" data-id="@item.Id" id="btnCreatePurchase">Add Item</a>
+                        <a type="button" class="btn btn-secondary mb-3" data-title="@item.Name" data-id="@item.Id" id="btnCreatePurchase">Add Item</a>
                 @*@Html.ActionLink("Add", "AddItem", new { id=customerId, purchaseId=item.Id }) |*@
             </td>
         </tr>

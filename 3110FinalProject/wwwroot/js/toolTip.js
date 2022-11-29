@@ -1,4 +1,5 @@
-﻿(function _homeTooltipsMain() {
+﻿//Credit: https://github.com/ArchwayEon/CSCI3110BootstrapIntro/blob/master/CSCI3110BootstrapIntro/wwwroot/js/toolTipDemo.js
+(function _homeTooltipsMain() {
     let allTooltipDOMElementList =
         document.querySelectorAll('[data-bs-toggle="tooltip"]');
     // Convert the NodeList to an Array

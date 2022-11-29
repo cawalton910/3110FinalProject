@@ -4,12 +4,11 @@
 
 @{
     ViewData["Title"] = "Purchases";
-    var customerId = (int)ViewData["Customer"];
+    var customerId = (int)ViewData["Customer"]!;
     var customer = await _customerRepo.ReadAsync(customerId);
 }
 
-<h1>Purchase orders for @customer.FirstName @customer.LastName</h1>
-
+<h1>Purchase Orders for @customer!.FirstName @customer.LastName</h1>
 <p>
  
 </p>
@@ -53,9 +52,9 @@
                 @Html.DisplayFor(modelItem => item.DeliveryAddress)
             </td>
             <td>
-                @Html.ActionLink("View", "Details", new {  id=customerId, purchaseId=item.Id }) |
+                    @Html.ActionLink("View", "Details", "ProductPurchase", new {  id=customerId, purchaseId=item.Id }) |
                 
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    @Html.ActionLink("Delete", "Delete", "Purchase", new {  id=item.CustomerId, purchaseId=item.Id  })
             </td>
         </tr>
 }

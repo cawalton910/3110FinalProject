@@ -9,6 +9,7 @@ namespace _3110FinalProject.Models.Entities
         public string? FirstName { get; set; }
         [DisplayName("Last Name")]
         public string? LastName { get; set; }
+        [DisplayName("Purchase Orders")]
         public ICollection<Purchase> Purchases { get; set; } = new List<Purchase>();
 
     }

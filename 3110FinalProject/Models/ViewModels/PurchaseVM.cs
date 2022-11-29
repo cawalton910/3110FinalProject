@@ -1,11 +1,13 @@
 ﻿using _3110FinalProject.Models.Entities;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace _3110FinalProject.Models.ViewModels
 {
     public class PurchaseVM
     {
         public int Id { get; set; }
+        [Required]
         public DateTime Date { get; set; }
         [DisplayName("Delivery Address")]
         public string? DeliveryAddress { get; set; }

@@ -46,6 +46,7 @@ namespace _3110FinalProject.Services
             if (purchase != null)
             {
                 _db.Purchases.Remove(purchase);
+                await _db.SaveChangesAsync();
             }
         }
 
