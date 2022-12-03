@@ -2,6 +2,9 @@
 
 namespace _3110FinalProject.Services
 {
+    /// <summary>
+    /// Interface for the purchase repository
+    /// </summary>
     public interface IPurchaseRepository
     {
         Task<ICollection<Purchase>> ReadAllAsync();

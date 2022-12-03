@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace _3110FinalProject.Controllers
 {
+    /// <summary>
+    /// This is the customer controller for creating, editing, deleting, and reading customers.
+    /// </summary>
     public class CustomerController : Controller
     {
         private readonly ICustomerRepository _customerRepo;
@@ -13,10 +16,19 @@ namespace _3110FinalProject.Controllers
         {
             _customerRepo = customerRepo;
         }
+        /// <summary>
+        /// This method reads all customers and displays them as a list
+        /// </summary>
+        /// <returns></returns>
         public async Task<IActionResult> Index()
         {
             return View(await _customerRepo.ReadAllAsync());
         }
+        /// <summary>
+        /// This is the GET method for editing a customer
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Edit(int id)
         {
             var customer = await _customerRepo.ReadAsync(id);
@@ -33,6 +45,11 @@ namespace _3110FinalProject.Controllers
             };
             return View(customerVM);
         }
+        /// <summary>
+        /// This is the POST method for editing a customer
+        /// </summary>
+        /// <param name="customerVM"></param>
+        /// <returns></returns>
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(CustomerVM customerVM)
         {
@@ -43,10 +60,19 @@ namespace _3110FinalProject.Controllers
             }
             return RedirectToAction("Index");
         }
+        /// <summary>
+        /// This is the GET method for creating a customer
+        /// </summary>
+        /// <returns></returns>
         public IActionResult Create()
         {
             return View();
         }
+        /// <summary>
+        /// This is the POST method for creating a customer
+        /// </summary>
+        /// <param name="customerVM"></param>
+        /// <returns></returns>
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CustomerVM customerVM)
         {
@@ -57,11 +83,21 @@ namespace _3110FinalProject.Controllers
             }
             return RedirectToAction("Index");
         }
+        /// <summary>
+        /// This is the GET method for deleting a customer
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Delete(int id)
         {
             var customer = await _customerRepo.ReadAsync(id);
             return View(customer);
         }
+        /// <summary>
+        /// This is the POST method for deleting a customer
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost, ValidateAntiForgeryToken, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

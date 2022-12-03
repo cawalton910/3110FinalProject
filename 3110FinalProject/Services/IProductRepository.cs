@@ -2,6 +2,9 @@
 
 namespace _3110FinalProject.Services
 {
+    /// <summary>
+    /// Interface for the product repository
+    /// </summary>
     public interface IProductRepository
     {
         Task<ICollection<Product>> ReadAllAsync();

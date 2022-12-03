@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace _3110FinalProject.Controllers
 {
+    /// <summary>
+    /// This is the API controller for creating, editing, and deleting customers
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class CustomerAPIController : Controller
@@ -13,32 +16,12 @@ namespace _3110FinalProject.Controllers
         public CustomerAPIController(ICustomerRepository customerRepo)
         {
             _customerRepo = customerRepo;
-        }
-
-
-
-
-
-
-        
-        //public async Task<IActionResult> Edit(int id)
-        //{
-        //    var customer = await _customerRepo.ReadAsync(id);
-        //    if (customer == null)
-        //    {
-        //        return RedirectToAction("Index");
-        //    }
-        //    var customerVM = new CustomerVM
-        //    {
-        //        Id = customer.Id,
-        //        FirstName = customer.FirstName,
-        //        LastName = customer.LastName,
-        //        Purchases = customer.Purchases,
-        //    };
-        //    return View(customerVM);
-        //}
-
-
+        }   
+        /// <summary>
+        /// This method updates the customers properties
+        /// </summary>
+        /// <param name="customerVM"></param>
+        /// <returns></returns>
         [HttpPut("edit")]
         public async Task<IActionResult> Edit([FromForm]CustomerVM customerVM)
         {
@@ -46,20 +29,11 @@ namespace _3110FinalProject.Controllers
             await _customerRepo.UpdateAsync(customer.Id, customer);
             return NoContent();
         }
-
-
-
-
-
-
-
-
-        //public IActionResult Create()
-        //{
-        //    return View();
-        //}
-
-
+        /// <summary>
+        /// This method creates a customer
+        /// </summary>
+        /// <param name="customerVM"></param>
+        /// <returns></returns>
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromForm] CustomerVM customerVM)
         {
@@ -67,20 +41,11 @@ namespace _3110FinalProject.Controllers
             await _customerRepo.CreateAsync(customer);
             return NoContent();
         }
-
-
-
-
-
-
-
-        //public async Task<IActionResult> Delete(int id)
-        //{
-        //    var customer = await _customerRepo.ReadAsync(id);
-        //    return View(customer);
-        //}
-
-
+        /// <summary>
+        /// This method deletes a customer
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {

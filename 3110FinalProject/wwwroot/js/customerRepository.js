@@ -1,9 +1,9 @@
 ﻿"using strict";
+//Repository the handles creating, updating, and deleting customers AJAX requests
+const baseAddress = "/api/customerapi";         //Path to the CustomerAPIController
 
-const baseAddress = "/api/customerapi";
 
-
-
+//Sends AJAX request to api/customerapi/edit with the formdata to update a customer
 export async function update(formData) {
     const address = `${baseAddress}/edit`;
     const response = await fetch(address, {
@@ -17,7 +17,7 @@ export async function update(formData) {
 }
 
 
-
+//Sends AJAX request to api/customerapi/create with the formdata to create a customer
 export async function create(formData) {
     const address = `${baseAddress}/create`;
     const response = await fetch(address, {
@@ -32,7 +32,7 @@ export async function create(formData) {
 }
 
 
-
+//Sends AJAX request to api/customerapi/delete/{id} with the customer id to delete
 export async function deleteCustomer(id) {
     const address = `${baseAddress}/delete/${id}`;
     console.log(address);

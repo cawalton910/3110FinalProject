@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace _3110FinalProject.Services
 {
+    /// <summary>
+    /// This repository handles creating, reading, and removing purchases from the database
+    /// </summary>
     public class PurchaseRepository : IPurchaseRepository
     {
         private readonly ApplicationDbContext _db;
@@ -13,6 +16,12 @@ namespace _3110FinalProject.Services
             _db = db;
             _customerRepo = customerRepo;
         }
+        /// <summary>
+        /// This method adds a purchase model to the database
+        /// </summary>
+        /// <param name="purchase"></param>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<Purchase> CreateAsync(Purchase purchase, int id)
         {
             var customer = await _customerRepo.ReadAsync(id);
@@ -25,21 +34,32 @@ namespace _3110FinalProject.Services
             }
             return purchase;
         }
-
+        /// <summary>
+        /// This method return a list of all purchases from the database
+        /// </summary>
+        /// <returns></returns>
         public async Task<ICollection<Purchase>> ReadAllAsync()
         {
             return await _db.Purchases
                 .Include(p => p.Products)
                 .ToListAsync();
         }
-
+        /// <summary>
+        /// This method returns one purchase from the database
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<Purchase?> ReadAsync(int id)
         {
             return await _db.Purchases
                 .Include(p => p.Products)
                 .FirstOrDefaultAsync(a => a.Id == id);
         }
-
+        /// <summary>
+        /// This method removes a purchase from the database
+        /// </summary>
+        /// <param name="purchaseId"></param>
+        /// <returns></returns>
         public async Task RemoveAsync(int purchaseId)
         {
             var purchase = await ReadAsync(purchaseId);

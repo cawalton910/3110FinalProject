@@ -2,6 +2,9 @@
 
 namespace _3110FinalProject.Services
 {
+    /// <summary>
+    /// Interface for the customer repository
+    /// </summary>
     public interface ICustomerRepository
     {
         Task<ICollection<Customer>> ReadAllAsync();

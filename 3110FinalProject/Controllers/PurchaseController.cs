@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace _3110FinalProject.Controllers
 {
+    /// <summary>
+    /// This controller is for creating, removing, and reading purchases.
+    /// </summary>
     public class PurchaseController : Controller
     {
         private readonly IProductRepository _productRepo;
@@ -19,10 +22,21 @@ namespace _3110FinalProject.Controllers
             _productPurchaseRepo = productPurchaseRepo;
             _customerRepo = customerRepo;
         }
+        /// <summary>
+        /// This is the GET method for creating a purchase for a customer
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public IActionResult Create(int id)
         {
             return View();
         }
+        /// <summary>
+        /// This is the POST method for creating a purchase for a customer
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="purchaseVM"></param>
+        /// <returns></returns>
         [HttpPost, ActionName("Create")]
         public async Task<IActionResult> CreateConfirmed(int id, PurchaseVM purchaseVM)
         {
@@ -33,37 +47,35 @@ namespace _3110FinalProject.Controllers
             return RedirectToAction("AddItem", "ProductPurchase", new { id=id, purchaseId=purchase.Id });
             //return View(allProducts);
         }
-        //public async Task<IActionResult> AddItem(int id, int purchaseId)
-        //{
-        //    ViewData["id"] = id;
-        //    ViewData["purchaseId"] = purchaseId;
-        //    var products = await _productRepo.ReadAllAsync();
-        //    return View(products);
-        //}
-        //[HttpPost]
-        //public async Task<IActionResult> AddItem(int id, int purchaseId, int productId, int quantity)
-        //{
-        //    var product = await _productRepo.ReadAsync(productId);
-        //    var purchase = await _purchaseRepo.ReadAsync(purchaseId);
-        //    if (purchase != null && product != null)
-        //    {
-        //        await _productPurchaseRepo.CreateAsync(purchaseId, productId, quantity);
-        //    }
-        //    return RedirectToAction("AddItem", new { id=id, purchaseId=purchase!.Id});
-
-        //}
+        /// <summary>
+        /// This is method displays a list of purchases for a customer
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         public async Task<IActionResult> ViewPurchases(int Id)
         {
             var customer = await _customerRepo.ReadAsync(Id);
             ViewData["Customer"] = customer!.Id;
             return View(customer.Purchases);
         }
+        /// <summary>
+        /// This is the GET method for deleting a purchase
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="purchaseid"></param>
+        /// <returns></returns>
         public async Task<IActionResult> Delete(int id, int purchaseid)
         {
             var purchase = await _purchaseRepo.ReadAsync(purchaseid);
             ViewData["customerid"] = id;
             return View(purchase);
         }
+        /// <summary>
+        /// This is the POST method for deleting a purchase
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="purchaseid"></param>
+        /// <returns></returns>
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id, int purchaseid)
         {
@@ -71,32 +83,5 @@ namespace _3110FinalProject.Controllers
             return RedirectToAction("ViewPurchases", new { id = id});
         }
 
-        //public async Task<IActionResult> Details(int Id, int purchaseId)
-        //{
-        //    var customer = await _customerRepo.ReadAsync(Id);
-        //    if (customer == null)
-        //    {
-        //        return RedirectToAction("ViewPurchases", new { id = Id });
-        //    }
-        //    var purchase = await _purchaseRepo.ReadAsync(purchaseId);
-        //    if (purchase == null)
-        //    {
-        //        return RedirectToAction("ViewPurchases", new { id = Id });
-        //    }
-        //    ViewData["customerid"] = Id;
-        //    ViewData["purchaseId"] = purchaseId;
-        //    return View(purchase.Products);
-        //}
-        //public async Task<IActionResult> RemoveItem(int id, int purchaseId,[Bind(Prefix = "productId")] int productPurchaseId)
-        //{
-        //    var productPurchase = await _productPurchaseRepo.ReadAsync(productPurchaseId);
-        //    return View(productPurchase);
-        //}
-        //[HttpPost, ActionName("RemoveItem")]
-        //public async Task<IActionResult> RemoveItemConfirmed(int id, int purchaseId,[Bind(Prefix = "productId")]int productPurchaseId)
-        //{
-        //    await _productPurchaseRepo.RemoveAsync(purchaseId, productPurchaseId);
-        //    return RedirectToAction("Details", new { id = id, purchaseId = purchaseId });
-        //}
     }
 }
