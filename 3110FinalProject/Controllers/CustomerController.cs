@@ -27,7 +27,7 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This is the GET method for editing a customer
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Customer ID</param>
         /// <returns></returns>
         public async Task<IActionResult> Edit(int id)
         {
@@ -48,7 +48,7 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This is the POST method for editing a customer
         /// </summary>
-        /// <param name="customerVM"></param>
+        /// <param name="customerVM">Customer View Model from a form</param>
         /// <returns></returns>
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(CustomerVM customerVM)
@@ -71,7 +71,7 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This is the POST method for creating a customer
         /// </summary>
-        /// <param name="customerVM"></param>
+        /// <param name="customerVM">Customer View Model from a form</param>
         /// <returns></returns>
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CustomerVM customerVM)
@@ -86,7 +86,7 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This is the GET method for deleting a customer
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Customer ID</param>
         /// <returns></returns>
         public async Task<IActionResult> Delete(int id)
         {
@@ -96,7 +96,7 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This is the POST method for deleting a customer
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Customer ID</param>
         /// <returns></returns>
         [HttpPost, ValidateAntiForgeryToken, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -19,8 +19,8 @@ namespace _3110FinalProject.Services
         /// <summary>
         /// This method adds a purchase model to the database
         /// </summary>
-        /// <param name="purchase"></param>
-        /// <param name="id"></param>
+        /// <param name="purchase">Purchase model</param>
+        /// <param name="id">Customer ID</param>
         /// <returns></returns>
         public async Task<Purchase> CreateAsync(Purchase purchase, int id)
         {
@@ -47,7 +47,7 @@ namespace _3110FinalProject.Services
         /// <summary>
         /// This method returns one purchase from the database
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Purchase ID</param>
         /// <returns></returns>
         public async Task<Purchase?> ReadAsync(int id)
         {
@@ -58,7 +58,7 @@ namespace _3110FinalProject.Services
         /// <summary>
         /// This method removes a purchase from the database
         /// </summary>
-        /// <param name="purchaseId"></param>
+        /// <param name="purchaseId">Purchase ID</param>
         /// <returns></returns>
         public async Task RemoveAsync(int purchaseId)
         {

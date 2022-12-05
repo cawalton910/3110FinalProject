@@ -4,7 +4,7 @@
 
 namespace _3110FinalProject.Migrations
 {
-    public partial class mig05 : Migration
+    public partial class mig01 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

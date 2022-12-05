@@ -17,7 +17,7 @@ namespace _3110FinalProject.Services
         /// <summary>
         /// This method adds a customer model to the database
         /// </summary>
-        /// <param name="customer"></param>
+        /// <param name="customer">Customer model</param>
         /// <returns></returns>
         public async Task<Customer> CreateAsync(Customer customer)
         {
@@ -38,7 +38,7 @@ namespace _3110FinalProject.Services
         /// <summary>
         /// This method returns one customer in the database as a list including the related data
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Customer ID</param>
         /// <returns></returns>
         public async Task<Customer?> ReadAsync(int id)
         {
@@ -51,8 +51,8 @@ namespace _3110FinalProject.Services
         /// <summary>
         /// This method updates a customers data in the databases
         /// </summary>
-        /// <param name="customerId"></param>
-        /// <param name="customer"></param>
+        /// <param name="customerId">Customer ID</param>
+        /// <param name="customer">Customer model</param>
         /// <returns></returns>
         public async Task UpdateAsync(int customerId, Customer customer)
         {
@@ -68,7 +68,7 @@ namespace _3110FinalProject.Services
         /// <summary>
         /// This method removes a customer from the database
         /// </summary>
-        /// <param name="customerId"></param>
+        /// <param name="customerId">Customer ID</param>
         /// <returns></returns>
         public async Task RemoveAsync(int customerId)
         {

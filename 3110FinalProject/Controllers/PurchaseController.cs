@@ -25,7 +25,7 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This is the GET method for creating a purchase for a customer
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Customer ID</param>
         /// <returns></returns>
         public IActionResult Create(int id)
         {
@@ -34,8 +34,8 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This is the POST method for creating a purchase for a customer
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="purchaseVM"></param>
+        /// <param name="id">Customer ID</param>
+        /// <param name="purchaseVM">Purchase View Model</param>
         /// <returns></returns>
         [HttpPost, ActionName("Create")]
         public async Task<IActionResult> CreateConfirmed(int id, PurchaseVM purchaseVM)
@@ -50,7 +50,7 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This is method displays a list of purchases for a customer
         /// </summary>
-        /// <param name="Id"></param>
+        /// <param name="Id">Customer ID</param>
         /// <returns></returns>
         public async Task<IActionResult> ViewPurchases(int Id)
         {
@@ -61,8 +61,8 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This is the GET method for deleting a purchase
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="purchaseid"></param>
+        /// <param name="id">Customer ID</param>
+        /// <param name="purchaseid">Purchase ID</param>
         /// <returns></returns>
         public async Task<IActionResult> Delete(int id, int purchaseid)
         {
@@ -73,8 +73,8 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This is the POST method for deleting a purchase
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="purchaseid"></param>
+        /// <param name="id">Customer ID</param>
+        /// <param name="purchaseid">Purchase ID</param>
         /// <returns></returns>
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id, int purchaseid)

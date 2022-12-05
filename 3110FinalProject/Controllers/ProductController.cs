@@ -26,7 +26,7 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This is the GET method for editing a product
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Product ID</param>
         /// <returns></returns>
         public async Task<IActionResult> Edit(int id)
         {
@@ -48,7 +48,7 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This is the POST method for editing a product
         /// </summary>
-        /// <param name="productVM"></param>
+        /// <param name="productVM">Product View Model from a form</param>
         /// <returns></returns>
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(ProductVM productVM)
@@ -71,7 +71,7 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This is the POST method for creating a product
         /// </summary>
-        /// <param name="productVM"></param>
+        /// <param name="productVM">Product View Model from a form</param>
         /// <returns></returns>
         [HttpPost, ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ProductVM productVM)
@@ -86,7 +86,7 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This is the GET method for deleting a product
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Product ID</param>
         /// <returns></returns>
         public async Task<IActionResult> Delete(int id)
         {
@@ -96,7 +96,7 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This is the POST method for deleting a product
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Product ID</param>
         /// <returns></returns>
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)

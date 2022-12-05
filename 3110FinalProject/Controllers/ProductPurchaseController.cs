@@ -23,9 +23,9 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This is the GET method for removing a product from a purchase
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="purchaseId"></param>
-        /// <param name="productPurchaseId"></param>
+        /// <param name="id">Customer ID</param>
+        /// <param name="purchaseId">Purchase ID</param>
+        /// <param name="productPurchaseId">ProductPurchase ID</param>
         /// <returns></returns>
         public async Task<IActionResult> RemoveItem(int id, int purchaseId, [Bind(Prefix = "productId")] int productPurchaseId)
         {
@@ -37,9 +37,9 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This is the POST method for removing a product from a purchase
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="purchaseId"></param>
-        /// <param name="productPurchaseId"></param>
+        /// <param name="id">Customer ID</param>
+        /// <param name="purchaseId">Purchase ID</param>
+        /// <param name="productPurchaseId">ProductPurchase ID</param>
         /// <returns></returns>
         [HttpPost, ActionName("RemoveItem")]
         public async Task<IActionResult> RemoveItemConfirmed(int id, int purchaseId, [Bind(Prefix = "productId")] int productPurchaseId)
@@ -50,8 +50,8 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This method displays a customers purchase with each product and their quantities
         /// </summary>
-        /// <param name="Id"></param>
-        /// <param name="purchaseId"></param>
+        /// <param name="Id">Customer ID</param>
+        /// <param name="purchaseId">Purchase ID</param>
         /// <returns></returns>
         public async Task<IActionResult> Details(int Id, int purchaseId)
         {
@@ -72,8 +72,8 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This is the GET method for adding a product to a purchase
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="purchaseId"></param>
+        /// <param name="id">Customer ID</param>
+        /// <param name="purchaseId">Purchase ID</param>
         /// <returns></returns>
         public async Task<IActionResult> AddItem(int id, int purchaseId)
         {
@@ -85,10 +85,10 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This is the POST method for adding a product to a purchase
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="purchaseId"></param>
-        /// <param name="productId"></param>
-        /// <param name="quantity"></param>
+        /// <param name="id">Customer ID</param>
+        /// <param name="purchaseId">Purchase ID</param>
+        /// <param name="productId">Product ID</param>
+        /// <param name="quantity">Product Quantity</param>
         /// <returns></returns>
         [HttpPost]
         public async Task<IActionResult> AddItem(int id, int purchaseId, int productId, int quantity)

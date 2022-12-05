@@ -12,8 +12,8 @@ using _3110FinalProject.Services;
 namespace _3110FinalProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221123222009_mig08")]
-    partial class mig08
+    [Migration("20221205150923_mig01")]
+    partial class mig01
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

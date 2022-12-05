@@ -21,9 +21,9 @@ namespace _3110FinalProject.Services
         /// <summary>
         /// This creates a relationship between a product and a purchase. 
         /// </summary>
-        /// <param name="purchaseId"></param>
-        /// <param name="productId"></param>
-        /// <param name="quantity"></param>
+        /// <param name="purchaseId">Purchase ID</param>
+        /// <param name="productId">Product ID</param>
+        /// <param name="quantity">Product Quantity</param>
         /// <returns></returns>
         public async Task<ProductPurchase?> CreateAsync(int purchaseId, int productId, int quantity)
         {
@@ -55,8 +55,8 @@ namespace _3110FinalProject.Services
         /// <summary>
         /// This removes a relationship between a product and a purchase
         /// </summary>
-        /// <param name="purchaseId"></param>
-        /// <param name="productPurchaseId"></param>
+        /// <param name="purchaseId">Purchase ID</param>
+        /// <param name="productPurchaseId">ProductPurchase ID</param>
         /// <returns></returns>
         public async Task RemoveAsync(int purchaseId, int productPurchaseId)
         {
@@ -70,7 +70,7 @@ namespace _3110FinalProject.Services
         /// <summary>
         /// This returns a productpurchase from the database
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">ProductPurchase ID</param>
         /// <returns></returns>
         public async Task<ProductPurchase?> ReadAsync(int id)
         {

@@ -18,7 +18,7 @@ namespace _3110FinalProject.Services
         /// <summary>
         /// This method adds a product model to the database
         /// </summary>
-        /// <param name="product"></param>
+        /// <param name="product">Product Model</param>
         /// <returns></returns>
         public async Task<Product> CreateAsync(Product product)
         {
@@ -39,7 +39,7 @@ namespace _3110FinalProject.Services
         /// <summary>
         /// This method returns one product from the database
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Product ID</param>
         /// <returns></returns>
         public async Task<Product?> ReadAsync(int id)
         {
@@ -50,7 +50,7 @@ namespace _3110FinalProject.Services
         /// <summary>
         /// This method removes a product from the database
         /// </summary>
-        /// <param name="productId"></param>
+        /// <param name="productId">Product ID</param>
         /// <returns></returns>
         public async Task RemoveAsync(int productId)
         {
@@ -64,8 +64,8 @@ namespace _3110FinalProject.Services
         /// <summary>
         /// This method updates a products data in the database
         /// </summary>
-        /// <param name="productId"></param>
-        /// <param name="product"></param>
+        /// <param name="productId">Product ID</param>
+        /// <param name="product">Product Model</param>
         /// <returns></returns>
         public async Task UpdateAsync(int productId, Product product)
         {

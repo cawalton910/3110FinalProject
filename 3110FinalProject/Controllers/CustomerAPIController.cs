@@ -20,7 +20,7 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This method updates the customers properties
         /// </summary>
-        /// <param name="customerVM"></param>
+        /// <param name="customerVM">Customer View Model coming from a form</param>
         /// <returns></returns>
         [HttpPut("edit")]
         public async Task<IActionResult> Edit([FromForm]CustomerVM customerVM)
@@ -32,7 +32,7 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This method creates a customer
         /// </summary>
-        /// <param name="customerVM"></param>
+        /// <param name="customerVM">Customer View Model coming from a form</param>
         /// <returns></returns>
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromForm] CustomerVM customerVM)
@@ -44,7 +44,7 @@ namespace _3110FinalProject.Controllers
         /// <summary>
         /// This method deletes a customer
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">Customer ID</param>
         /// <returns></returns>
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> Delete(int id)
